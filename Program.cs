@@ -14,7 +14,7 @@ namespace LineCounter
                 if (File.Exists(path))
                 {
                     // This path is a file
-                    Total = Total + CountFile(path);
+                    Total += CountFile(path);
                 }
                 else if (Directory.Exists(path))
                 {
@@ -23,12 +23,12 @@ namespace LineCounter
                 }
                 else
                 {
-                    Console.WriteLine($"{path} no es un archivo o directoria valido.");
+                    Console.WriteLine($"{path} is not a valid file or directory.");
                 }
             }
             
             Console.WriteLine("-------------------------------------------------");
-            Console.WriteLine($"Total final: {Total:N0}");
+            Console.WriteLine($"Total lines of code: {Total:N0}");
         }
 
         public static ulong CountFile(string path)
@@ -54,6 +54,7 @@ namespace LineCounter
 
         public static void ProcessDirectoriy(string directory)
         {
+            // Add here the patterns to match directories to exclude from the count
             if (!(directory.EndsWith("bin")) 
                 && !(directory.EndsWith("obj"))
                 && !(directory.EndsWith(".vs"))
